@@ -1,6 +1,7 @@
 package api
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/labstack/echo"
@@ -9,7 +10,7 @@ import (
 // FooBarRequest represents body of FooBar request.
 type FooBarRequest struct {
 	Foo string `json:"foo"`
-	Bar []int  `json:"bar"`
+	Bar string `json:"bar"`
 }
 
 // FooBarResponse represents body of FooBar response.
@@ -22,7 +23,10 @@ type FooBarResponse struct {
 // FooBarHandler handles incoming foobar requests
 func FooBarHandler(ctx echo.Context) error {
 	req := FooBarRequest{}
+	fmt.Println("Test")
+
 	if err := ctx.Bind(&req); err != nil {
+		fmt.Println("Bad Request")
 		return echo.ErrBadRequest
 	}
 	resp := doSthWithRequest(req)
