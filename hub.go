@@ -2,7 +2,7 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-package main
+package rapidcaptcha_server
 
 import (
 	"encoding/json"
@@ -46,8 +46,8 @@ func (h *Hub) run() {
 		case client := <-h.unregister:
 			if _, ok := h.clients[client]; ok {
 				delete(h.clients, client)
-				delete(h.captchas, client.RequestorID)
-				close(client.send)
+				delete(h.captchas, RequestorID)
+				close(send)
 			}
 		case message := <-h.broadcast:
 			c := Captcha{}
@@ -55,12 +55,12 @@ func (h *Hub) run() {
 			if err != nil {
 				fmt.Println(err)
 			}
-			h.captchas[c.GroupID] = c
+			h.captchas[GroupID] = c
 			for client := range h.clients {
 				select {
-				case client.send <- message:
+				case send <- message:
 				default:
-					close(client.send)
+					close(send)
 					delete(h.clients, client)
 				}
 			}

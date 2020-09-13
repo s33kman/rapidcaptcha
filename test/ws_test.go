@@ -1,4 +1,4 @@
-package rapidcaptcha_server
+package test
 
 import (
 	"fmt"
