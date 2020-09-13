@@ -1,0 +1,34 @@
+.container-center {
+    height: 400px;
+    position: relative;
+    border: 3px solid green;
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.submit-button {
+    margin-top: 100px;
+}
+
+.group-id {
+    padding-bottom: 240px;
+}
+
+.arrow {
+    position: relative;
+    z-index: 100;
+}
+
+.spinner {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
