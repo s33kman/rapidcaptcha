@@ -1,8 +1,7 @@
 # RapidCaptcha
 
-This programm displays Captcha challenges over a webapp which can be submitted by 3rd party applications. The Captcha
-challenge can be then solved manually be a real human. The answer to the challenge will be send back to the 3rd party client
-application so that those apps can solve Captchas even in headless modes. This programm has been implemented using the (https://github.com/gorilla/websocket) package.
+RapidCaptcha is listening for incoming Captcha challenges over websockets and displays those challenges in a  web application. Captcha challenges can be submitted by any 3rd party application as long as it is websocket capable. As soon as the challenge has been processed by RapidCaptcha, it will display the challenge in the browser which is then manually solvable over the webapp. The answer to the challenge will be send back to the 3rd party client
+application so that even headless applications can solve Captchas from now on. This programm has been implemented using the (https://github.com/gorilla/websocket) package.
 
 ## Running a RapidCaptcha server
 
