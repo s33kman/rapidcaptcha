@@ -1,9 +1,9 @@
 FROM golang:1.14
 
-WORKDIR /go/src/chat
+WORKDIR /go/src/rapidcaptcha
 COPY . .
 
 RUN go get -d -v ./...
 RUN go install -v ./...
 
-CMD ["chat"]
+CMD ["rapidcaptcha"]

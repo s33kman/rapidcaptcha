@@ -45,8 +45,11 @@ func (h *Hub) run() {
 			h.clients[client] = true
 		case client := <-h.unregister:
 			if _, ok := h.clients[client]; ok {
+				fmt.Println("Captchas in Pipe: ", h.captchas[client.RequestorID])
 				delete(h.clients, client)
 				delete(h.captchas, client.RequestorID)
+				fmt.Println("Client left: ", client.RequestorID)
+				fmt.Println("Captchas in Pipe: ", h.captchas[client.RequestorID])
 				close(client.send)
 			}
 		case message := <-h.broadcast:

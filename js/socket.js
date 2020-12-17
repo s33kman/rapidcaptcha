@@ -40,7 +40,7 @@ window.onload = function() {
     };
 
     if (window["WebSocket"]) {
-        conn = new WebSocket("wss://" + document.location.host + "/ws");
+        conn = new WebSocket("ws://" + document.location.host + "/ws");
         conn.onclose = function(evt) {
             var item = document.createElement("div");
             item.innerHTML = "<b>Connection closed.</b>";
@@ -51,14 +51,15 @@ window.onload = function() {
             for (var i = 0; i < messages.length; i++) {
                 console.log(messages[i])
                 var msgItem = JSON.parse(messages[i]);
-                if (msgItem.isRequest === true && msgItem.groupId === groupID.innerHTML){
-                    console.log(msgItem.groupId);
-                    console.log(msgItem.image);
-                    groupID.innerHTML = msgItem.groupId;
-                    // var item = document.createElement("img");
-                    // item.innerText = msgItem.group_id;
-                    // item.src = msgItem.image;
-                    displayCaptcha(msgItem);
+                if (msgItem.groupId === groupID.innerHTML && msgItem.isRequest){
+                    if (msgItem.solved == true) {
+                        showConfirmation();
+                    } else {
+                        console.log(msgItem.groupId);
+                        console.log(msgItem.image);
+                        groupID.innerHTML = msgItem.groupId;
+                        displayCaptcha(msgItem);
+                    }
                 }
             }
         };

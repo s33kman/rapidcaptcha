@@ -5,11 +5,8 @@ application so that even headless applications can solve Captchas from now on. T
 
 ## Running a RapidCaptcha server
 
-You can download, build and run the server
-using the following commands.
+You can run the server using the following commands.
 
-    $ go get github.com/bullrox/rapidcaptcha-server
-    $ cd `go list -f '{{.Dir}}' github.com/bullrox/rapidcaptcha-server`
     $ go run *.go
 
 Open http://localhost:80/ in your browser and you are good to go.

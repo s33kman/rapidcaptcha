@@ -1,6 +1,7 @@
 var current_rotation = 0;
 var captchaImage = document.getElementById("captcha-image");
 var spinner = document.getElementById("spinner");
+var confirmation = document.getElementById("confirmation");
 var buttonLeft = document.getElementById("rotate-right");
 var buttonRight = document.getElementById("rotate-left");
 var buttonSubmit = document.getElementById("submit");
@@ -39,5 +40,13 @@ function showSpinner(yes) {
         buttonRight.disabled = false;
         buttonSubmit.disabled = false;
     }
+}
 
+function showConfirmation() {
+    captchaImage.style.display = "none";
+    spinner.style.display = "none";
+    confirmation.style.display = "block";
+    buttonLeft.disabled = true;
+    buttonRight.disabled = true;
+    buttonSubmit.disabled = true;
 }

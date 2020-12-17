@@ -59,9 +59,13 @@ func serveCaptcha(w http.ResponseWriter, r *http.Request) {
 
 	groupID := groupIDs[0]
 
-	if _, ok := hub.captchas[string(groupID)]; ok {
-		b, err := json.Marshal(hub.captchas[string(groupID)])
+	for k, v := range hub.captchas {
+		fmt.Println("Key: ", k, " // Value: ", v)
+	}
 
+	if _, ok := hub.captchas[string(groupID)]; ok {
+		fmt.Println("Image already cached for ", string(groupID))
+		b, err := json.Marshal(hub.captchas[string(groupID)])
 		cm := map[string]interface{}{"CaptchaJson": string(b)}
 		t, err := template.ParseFiles("rapidcaptcha.html")
 		if err != nil {

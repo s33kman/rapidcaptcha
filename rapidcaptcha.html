@@ -5,6 +5,7 @@
     <meta>
     <title>RapidCaptcha</title>
     <description></description>
+    <meta name="viewport" content="width=250, initial-scale=1.5, maximum-scale=1.5, user-scalable=no">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="css/center.css" type="text/css">
@@ -12,16 +13,17 @@
 </head>
 
 <body>
+<div id="page-container">
+
     <header>
         <nav id="topHeader" class="navbar navbar-expand-lg navbar-dark
                             bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="/">RapidCaptcha</a>
+                <a class="navbar-brand" href="/">RapidCaptcha <i class="fas fa-skiing"></i></a>
             </div>
         </nav>
     </header>
     <main>
-        <div class="container-center">
             <div class="center">
                 <!--                <div class="dropdown center group-id">
                                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -37,10 +39,12 @@
                                 <span id="CaptchaRestPlaceholder" class="center group-id" style="display:none;">{{.CaptchaJson}}</span>
 
                 <div class="d-flex align-items-center">
-                                    <button disabled class="arrow" id="rotate-right" onclick="rotate('right')"><i class="fas fa-share fa-2x"></i></button>
+                                    <button disabled class="arrow" id="rotate-right" onclick="rotate('right')" style="margin-right: 8px;"><i class="fas fa-share fa-2x"></i></button>
                                     <img id="captcha-image" src="img/captcha.png" style="display: none;">
-                                    <i id="spinner" class="spinner fas fa-spinner fa-5x" ></i>
-                                    <button disabled class="arrow" id="rotate-left" onclick="rotate('left')"><i class="fas fa-reply fa-2x"></i></button>
+                                    <div id="spinner" class="spinner"></div>
+                                    <i id="confirmation" class="fas fa-check-circle fa-6x" style="color:limegreen;display:none;margin-left: 8px;margin-right: 8px;"></i>
+                                    <!-- <i id="spinner" class="spinner fas fa-spinner fa-5x" ></i> -->
+                                    <button disabled class="arrow" id="rotate-left" onclick="rotate('left')" style="margin-left: 8px;"><i class="fas fa-reply fa-2x"></i></button>
                                 </div>
                                 <form id="form">
                                     <div class="center submit-button">
@@ -49,15 +53,15 @@
                                     </div>
                                 </form>
                             </div>
-                        </div>
                     </main>
-                    <footer>
+
+    <footer id="footer">
                         <nav class="navbar navbar-expand-lg navbar-dark
                         bg-dark">
                             <div class="d-md-flex d-block flex-row mx-md-auto mx-0">
                                 <ul class="navbar-nav ">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">RapidCaptcha</a>
+                                        <a  class="nav-link" href="#"><i class="far fa-copyright"></i> skmn.org</a>
                                     </li>
                                 </ul>
                             </div>
@@ -68,6 +72,8 @@
                         <script src="js/rotate.js" type="application/javascript"></script>
 
                     </footer>
-                </body>
+</div>
+
+</body>
 
                 </html>
