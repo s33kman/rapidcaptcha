@@ -58,7 +58,7 @@ type Client struct {
 // reads from this goroutine.
 func (c *Client) readPump() {
 	defer func() {
-		unregister <- c
+		c.hub.unregister <- c
 		c.conn.Close()
 	}()
 
@@ -80,7 +80,7 @@ func (c *Client) readPump() {
 			break
 		}
 		message = bytes.TrimSpace(bytes.Replace(message, newline, space, -1))
-		broadcast <- message
+		c.hub.broadcast <- message
 	}
 }
 
@@ -159,7 +159,7 @@ func serveWs(hub *Hub, w http.ResponseWriter, r *http.Request) {
 	}
 
 	client := &Client{hub: hub, conn: conn, RequestorID: r.Header.Get("RequestorID"), send: make(chan []byte, 256)}
-	register <- client
+	client.hub.register <- client
 
 	// Allow collection of memory referenced by the caller by doing all work in
 	// new goroutines.

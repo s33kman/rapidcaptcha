@@ -59,8 +59,8 @@ func serveCaptcha(w http.ResponseWriter, r *http.Request) {
 
 	groupID := groupIDs[0]
 
-	if _, ok := captchas[string(groupID)]; ok {
-		b, err := json.Marshal(captchas[string(groupID)])
+	if _, ok := hub.captchas[string(groupID)]; ok {
+		b, err := json.Marshal(hub.captchas[string(groupID)])
 
 		cm := map[string]interface{}{"CaptchaJson": string(b)}
 		t, err := template.ParseFiles("rapidcaptcha.html")
@@ -79,7 +79,7 @@ func serveCaptcha(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	flag.Parse()
-	go run()
+	go hub.run()
 
 	http.Handle("/css/", http.FileServer(http.Dir(".")))
 	http.Handle("/js/", http.FileServer(http.Dir(".")))

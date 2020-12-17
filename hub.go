@@ -46,8 +46,8 @@ func (h *Hub) run() {
 		case client := <-h.unregister:
 			if _, ok := h.clients[client]; ok {
 				delete(h.clients, client)
-				delete(h.captchas, RequestorID)
-				close(send)
+				delete(h.captchas, client.RequestorID)
+				close(client.send)
 			}
 		case message := <-h.broadcast:
 			c := Captcha{}
@@ -55,12 +55,12 @@ func (h *Hub) run() {
 			if err != nil {
 				fmt.Println(err)
 			}
-			h.captchas[GroupID] = c
+			h.captchas[c.GroupID] = c
 			for client := range h.clients {
 				select {
-				case send <- message:
+				case client.send <- message:
 				default:
-					close(send)
+					close(client.send)
 					delete(h.clients, client)
 				}
 			}
