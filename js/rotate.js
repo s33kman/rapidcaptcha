@@ -29,12 +29,14 @@ function resetRotation(){
 function showSpinner(yes) {
     if (yes){
         captchaImage.style.display = "none";
+        confirmation.style.display = "none";
         spinner.style.display = "block";
         buttonLeft.disabled = true;
         buttonRight.disabled = true;
         buttonSubmit.disabled = true;
     } else {
         captchaImage.style.display = "block";
+        confirmation.style.display = "none";
         spinner.style.display = "none";
         buttonLeft.disabled = false;
         buttonRight.disabled = false;
