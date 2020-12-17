@@ -51,7 +51,7 @@ window.onload = function() {
             for (var i = 0; i < messages.length; i++) {
                 console.log(messages[i])
                 var msgItem = JSON.parse(messages[i]);
-                    if (msgItem.isRequest === true && msgItem.groupId === groupID.innerHTML){
+                if (msgItem.isRequest === true && msgItem.groupId === groupID.innerHTML){
                     console.log(msgItem.groupId);
                     console.log(msgItem.image);
                     groupID.innerHTML = msgItem.groupId;
