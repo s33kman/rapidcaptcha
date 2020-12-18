@@ -5,6 +5,8 @@ var confirmation = document.getElementById("confirmation");
 var buttonLeft = document.getElementById("rotate-right");
 var buttonRight = document.getElementById("rotate-left");
 var buttonSubmit = document.getElementById("submit");
+var groupID = document.getElementById("group-id");
+var captchaCount = document.getElementById("captcha-count");
 
 function rotate(direction) {
     if (direction == "right") {
@@ -51,4 +53,10 @@ function showConfirmation() {
     buttonLeft.disabled = true;
     buttonRight.disabled = true;
     buttonSubmit.disabled = true;
+
+    groupID.classList.remove("badge-secondary");
+    groupID.classList.add("badge-success");
+
+    captchaCount.classList.remove("badge-secondary");
+    captchaCount.classList.add("badge-success");
 }

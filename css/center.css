@@ -11,15 +11,18 @@
     margin-top: 100px;
 }
 
-.group-id {
-    padding-bottom: 240px;
+.info-table {
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .arrow {
     position: relative;
     z-index: 100;
 }
-
 
 .spinner {
     margin-left: 12px;
@@ -35,8 +38,12 @@
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 #page-container {
@@ -49,5 +56,3 @@
     bottom: 0;
     width: 100%;
 }
-
-

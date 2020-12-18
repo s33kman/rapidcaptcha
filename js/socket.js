@@ -3,6 +3,7 @@ window.onload = function() {
     var rotationDegree = document.getElementById("rotation-degree");
     var captchaImage = document.getElementById("captcha-image");
     var groupID = document.getElementById("group-id");
+    var captchaCount = document.getElementById("captcha-count");
     var captchaRestPlaceholder = document.getElementById("CaptchaRestPlaceholder");
 
 
@@ -10,6 +11,10 @@ window.onload = function() {
         captchaImage.src = item.image;
         showSpinner(false);
         resetRotation()
+    }
+
+    function displayCounter(item) {
+        captchaCount.innerHTML = item.captchaCount;
     }
 
     if (captchaRestPlaceholder.innerHTML != "{{.CaptchaJson}}"){
@@ -57,8 +62,11 @@ window.onload = function() {
                     } else {
                         console.log(msgItem.groupId);
                         console.log(msgItem.image);
+                        console.log(msgItem.captchaCount);
+
                         groupID.innerHTML = msgItem.groupId;
                         displayCaptcha(msgItem);
+                        displayCounter(msgItem)
                     }
                 }
             }

@@ -10,9 +10,10 @@ import (
 )
 
 type Captcha struct {
-	GroupID   string `json:"groupId"`
-	Image     string `json:"image"`
-	IsRequest bool   `json:"isRequest"`
+	GroupID      string `json:"groupId"`
+	Image        string `json:"image"`
+	IsRequest    bool   `json:"isRequest"`
+	CaptchaCount int    `json:"captchaCount"`
 }
 
 var addr = flag.String("addr", ":80", "http service address")
