@@ -47,9 +47,7 @@ window.onload = function() {
     if (window["WebSocket"]) {
         conn = new WebSocket("wss://" + document.location.host + "/ws");
         conn.onclose = function(evt) {
-            var item = document.createElement("div");
-            item.innerHTML = "<b>Connection closed.</b>";
-            displayCaptcha(item);
+            showSpinner(true);
         };
         conn.onmessage = function(evt) {
             var messages = evt.data.split('\n');
